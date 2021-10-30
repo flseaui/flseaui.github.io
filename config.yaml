@@ -1,0 +1,13 @@
+baseURL: "https://flseaui.github.io/"
+languageCode: en-us
+title:
+theme: PaperMod
+
+enableEmoji: true
+publishDir: "docs"
+
+params:
+    description: "Claire's Portfolio"
+    author: Claire Meyer
+    defaultTheme: dark
+    disableThemeToggle: true

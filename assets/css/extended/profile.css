@@ -1,0 +1,200 @@
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - (var(--gap) * 2));
+    text-align: left;
+    font-size: xx-large;
+}
+
+.home ul#sections>li {
+    list-style: none;
+    margin: 200px 10px 100px;
+    display: block;
+    opacity: 0;
+}
+
+.home ul#sections>li h3 {
+    color: cornflowerblue;
+    margin-bottom: 2%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation: fadeIn .8s forwards;
+}
+
+/* ======================== BIO ======================== */
+
+.bio {
+    text-align: center;
+    padding-bottom: 250px;
+}
+
+.bio img {
+    width: 20%;
+    height: 20%;
+    display: inline-table;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.bio h3 {
+    margin: 10px 0px 0px;
+}
+
+/* ======================== SKILLS ======================== */
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: 0, 1fr 1fr;
+    grid-template-rows: 31% 1fr;
+    column-gap: 50px;
+}
+
+.skill-grid div ul li {
+    list-style-type: disc;
+    /* list-style-position: inside; */
+    text-align: left;
+    font-size: x-large;
+}
+
+.skill-grid h4 {
+    text-align: left;
+    margin: 10px 0px 10px;
+}
+
+.skill-grid .unity {
+    grid-column: 1;
+    grid-row: 1 / 2;
+}
+
+.skill-grid .cs {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.skill-grid .java {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.skill-grid .misc {
+    grid-column: 3;
+    grid-row: 1 / 2;
+}
+
+/* ======================== PROJECTS ======================== */
+
+
+.projects>ul {
+    list-style-type: none;
+    font-size: large;
+
+    margin-top: 1em;
+}
+
+.project {
+    display: grid;
+    grid-template-columns: 1fr fit-content(100%);
+    grid-template-rows: fit-content(100%) fit-content(100%);
+    row-gap: 0.8em;
+    column-gap: 1.2em;
+
+    margin-bottom: 6vh;
+}
+
+.project#gamejam-games {
+    column-gap: 0;
+    grid-template-columns: fit-content(100%) fit-content(100%) fit-content(100%);
+}
+
+.project#gamejam-games img {
+    height: 13em;
+}
+
+.project img {
+    height: 19em;
+    width: max-content;
+    border-radius: .5em;
+}
+
+.project .first-image {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.project .second-image {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.project #frog-img {
+    grid-column: 2;
+    grid-row: 2;
+
+    height: 30em;
+}
+
+.project .gamejam-blurb {
+    grid-column: 1 / 4;
+    grid-row: 1;
+}
+
+.project .gamejam-game div {
+    display: flex;
+    gap: .5em;
+    align-items: baseline;
+}
+
+.project .blurb {
+    grid-column: 2;
+    grid-row: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 0.5em;
+}
+
+.project .blurb h4 {
+    font-size: larger;
+}
+
+
+.project .blurb div {
+    display: flex;
+    gap: .5em;
+}
+
+.project .blurb .project-date {
+    font-size: medium;
+    font-weight: 500;
+}
+
+.project .bullets {
+    grid-column: 1;
+    grid-row: 2;
+
+    position: relative;
+    margin-left: 1em;
+
+    list-style-type: disc;
+    list-style-position: outside;
+
+    word-wrap: break-word;
+}
+
+.project .bullets li ul {
+    list-style-type: circle;
+    margin-left: 1em;
+}

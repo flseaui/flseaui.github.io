@@ -1,0 +1,369 @@
+{{- define "main" }}
+
+<main aria-role="main">
+    <nav>
+        <div class="home">
+            <ul id="sections">
+                <script>
+                    window.addEventListener("load", (event) => {
+                        list = document.querySelectorAll("#sections>li:not(.bio)");
+
+                        createObserver();
+                    }, false);
+
+                    function createObserver() {
+                        let options = {
+                            root: null,
+                            rootMargin: '0px',
+                            threshold: 0.02
+                        }
+
+                        const observer = new IntersectionObserver(entries => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.toggle("fadeIn");
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, options);
+
+                        list.forEach(item => observer.observe(item));
+                    }
+                </script>
+                <li class="bio" style="opacity: 1">
+                    <img id="profile" src="img/me.jpg" alt="profile image" />
+                    <h3> {{ .Params.title }} </h3>
+                    {{ .Content }}
+                    {{- partial "social_icons.html" $.Params.socialIcons -}}
+                </li>
+                <li class="skills">
+                    <h3>SPECIFIC EXPERIENCE</h3>
+                    <div class="skill-grid">
+                        <div class="unity">
+                            <h4>Unity</h4>
+                            <ul>
+                                <li> 2D and 3D workflows </li>
+                                <li> Editor extensions and tools </li>
+                                <li> Rapid prototyping </li>
+                                <li> P2P and Client-Server netcode </li>
+                                <li> Mecanim animations </li>
+                                <li> Controller & touch input </li>
+                                <li> Shaders </li>
+                                <li> DOTS/ECS </li>
+                                <li> Unity Expert certified </li>
+                                <li> Quick to learn new engine features </li>
+                            </ul>
+                        </div>
+                        <div class="cs"> {{/* TODO: maybe combine cs and java + add kotlin ? */}}
+                            <h4>C#</h4>
+                            <ul>
+                                <li> Unity and MonoGame </li>
+                                <li> WPF, Xamarin, ImGui </li>
+                                <li> Rider, Visual Studio </li>
+                                <li> Modern software principles </li>
+                            </ul>
+                        </div>
+                        <div class="java">
+                            <h4>Java + Kotlin</h4>
+                            <ul>
+                                <li> 10+ years of experience </li>
+                                <li> Written many games, mods, tools, drivers, etc </li>
+                                <li> JavaFX, Swing, LWJGL </li>
+                                <li> Java 17+ knowledge </li>
+                                <li> IntelliJ IDEA, eclipse </li>
+                            </ul>
+                        </div>
+                        <div class="misc">
+                            <h4>Misc</h4>
+                            <ul>
+                                <li> Git </li>
+                                <li> Scrum/Agile </li>
+                                <li> OpenGL, GLSL/HLSL </li>
+                                <li> Rust, C/C++17, Python </li>
+                                <li> Godot + GDScript, SFML </li>
+                                <li> Adobe CC </li>
+                                <li> JetBrains Suite, VSCode, Vim </li>
+                                <li> Experience with Windows, Mac, Linux </li>
+                                <li> Made this website :D </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="projects">
+                    <h3>PROJECTS</h3>
+                    <ul>
+                        <li>
+                            <div class="project">
+                                <img class="first-img" src="img/ocular2.png" alt="Ocular" />
+                                <div class="blurb">
+                                    <div>
+                                        <h4> Ocular </h4>
+                                        <p class="project-date"> (2019 - 2021) </p>
+                                    </div>
+                                    <p>
+                                        I was the lead programmer on Ocular, a 3D puzzle game about color and
+                                        perspective. I worked with a designer, 3D artist, and musician to create
+                                        a fun, pretty, and optimized cross-platform experience. I designed and wrote many complex
+                                        systems and tools for the game, including a voxel animator, dynamic pathfinding system, and an in-game level editor which was used
+                                        to build all 30+ levels in the game.
+                                    </p>
+                                    <p>
+                                        Due to Covid and other factors collaboration became more difficult and development slowed,
+                                        we cut features and eventually stopped. Though discouraging, we still hope to do a cleaned up Steam release at some point. 
+                                    </p>
+                                </div>
+                                <ul class="bullets">
+                                    <li> Kept a scalable codebase and accomdated for expanding scope and changing
+                                        visual style
+                                    </li>
+                                    <li> Had a say in design decisions from concept to (almost) completion </li>
+                                    <li> Implemented countless gameplay features over a year and a half of development </li>
+                                    <li> Made custom inspectors and editors for the designer and artist </li>
+                                    <li> Learned lessons in asset management/pipelines 
+                                        <ul>
+                                            <li> Importing voxel models/materials properly </li>
+                                            <li> Level storage method to balance developer/designer/player needs </li>
+                                            <li> Audio loading/playing </li>
+                                        </ul>
+                                    </li>
+                                    <li> Focused on optimization to run on Switch/mobile
+                                        <ul>
+                                            <li> Baked lighting, optimized shaders, models, etc </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <img class="second-img" src="img/ocular_menu2.png" alt="Ocular" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="project">
+                                <img class="first-img" src="img/nwapw_awards.png" alt="NWAPW" />
+                                <div class="blurb">
+                                    <div>
+                                        <h4> NWAPW/AVP_HS </h4>
+                                        <p class="project-date"> (2017 - 2019) </p>
+                                    </div>
+                                    <p>
+                                        I managed and lead a team of 20 high school students to write
+                                        autonomous driving software for an RC car in under two months.
+                                        I helped designate project roles and coordinate team members, set up and managed a large
+                                        git repository and worked to streamline our collaboration and communication process.
+                                        I provided guidance and direction to team members, helped set realistic goals and decide
+                                        when features needed to be cut. I also designed and maintained the projects infrastructure
+                                        and core systems with the help of a few others.
+                                    </p>
+                                    <p>
+                                        In 2018 we were invited to the AutoSens conferance in Belgium where we spoke on a panel about our project and experiences and
+                                        had a booth and live demo during the day. We won 2 awards.
+                                    </p>
+                                </div>
+                                <ul class="bullets">
+                                    <li> Joined NWAPW in 2017, lead AVP_HS group in 2018 and 2019 </li>
+                                    <li> Met and worked for 6 hours each day at Portland State University </li>
+                                    <li> Managed 6+ separate teams working on the same project
+                                        <ul>
+                                            <li> Taught proper source control and software design habits </li>
+                                            <li> Helped hardware and software people collaborate </li>
+                                        </ul>
+                                    </li>
+                                    <li> Helped integrate and update a simulator so teams could test their
+                                        code while the physical car was unavailable </li>
+                                    <li> Learned a lot about software management and collaboration on more complex projects </li>
+                                </ul>
+                                <img class="second-img" src="img/nwapw.png" alt="Traksim" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="project">
+                                <img class="first-img" src="img/ironclad.png" alt="Action Builder" />
+                                <div class="blurb">
+                                    <div>
+                                        <h4> Ironclad </h4>
+                                        <p class="project-date"> (2018 - 2019) </p>
+                                    </div>
+                                    <p>
+                                        Ironclad is a platform fighter I worked on for eight months with one other developer.
+                                        Most of my time was spent working on rollback netcode and online lobbies (as we knew how
+                                        much harder it could be to add later on) and a tool to let us visually design characters/moves,
+                                        with the plan to eventually turn it into a player creation tool. Rollback requires complete determinism to function, and Unity
+                                        isn't remotely deterministic, so solving that problem was very difficult and took far longer than we
+                                        expected. We eventually finished an initial revision of the netcode but by that point it was clear
+                                        that the scope of the project was far bigger than we could handle on our own so we put it on pause.
+                                    </p>
+                                </div>
+                                <ul class="bullets">
+                                    <li> Had to ditch most Unity systems and used fixed-point math to keep determinism </li>
+                                    <li> Steamworks API integration for lobbies/matchmaking </li>
+                                    <li> Extensive story mode planned, introducing all eight of our playable characters </li>
+                                    <li> Made multiple iterations of our character design tool to keep it cross-platform
+                                        <ul>
+                                            <li> Multiple GUI frameworks were appealing, ended up settling on ImGui and MonoGame to
+                                                simplify things after our WPF headache
+                                            </li>
+                                            <li> Heavily considered making it a Unity extension </li>
+                                        </ul>    
+                                    </li>
+                                    <li> 
+                                        Struggled to find an artist we could afford,
+                                        we planned to croudfund after finishing an MVP but never got to that point
+                                    </li>
+                                    <li>  At the time the genre was still niche but growing rapidly and we hoped to capitalize on that,
+                                        we had many heavily desired features planned that didn't yet exist in competitors (but now do)
+                                    </li>
+                                </ul>
+                                <img id="second-image" src="img/action_builder_2.png" alt="Rollback netcode" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="project">
+                                <img class="first-img" src="img/skf_game.png" alt="SKF character select screen" />
+                                <div class="blurb">
+                                    <div>
+                                        <h4> Super Konky Fighter </h4>
+                                        <p class="project-date"> (2018) </p>
+                                    </div>
+                                    <p>
+                                        SKF is a fighting game I developed with three friends in 2018. I was brought on
+                                        after the game had already been in development for four months to help clean up and refactor
+                                        a section of the project. What I expected to take just a few days ended up taking weeks 
+                                        and by the time it was over I was too invested (and needed) to leave so I stayed as
+                                        lead developer for the rest of the project. The game has three playable characters, five stages,
+                                        tons of intricately designed and animated moves, and a 15 song soundtrack. We also had 
+                                        3 more characters and AI opponents planned but we ran out of time to implement them before our deadline.
+                                    </p>
+                                </div>
+                                <ul class="bullets">
+                                    <li> Worked hard to salvage a non-functioning team 
+                                        <ul>
+                                            <li> Reassign roles, improve task tracking system </li>
+                                            <li> Enforce better project structure and source control </li>
+                                            <li> (crunch way harder than we should have) </li>
+                                        </ul>
+                                    </li>
+                                    <li> Optimized designer workflow to allow for much easier character iteration </li>
+                                    <li> Multiple alternate character skins </li>
+                                    <li> Complex menus with keyboard, mouse, and controller/stick support </li>
+                                    <li> Won Oregon high school game competition </li>
+                                    <li> Attempted but ultimately shelved online multiplayer due to the complexity of integrating it
+                                        into the existing code base </li>
+                                </ul>
+                                <img class="second-img" src="img/skf_css.png" alt="SKF main menu" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="project" id="gamejam-games">
+                                <div class="gamejam-blurb">
+                                    <div>
+                                        <h4> Game Jams </h4>
+                                        <p class="project-date"> (2015 - Present) </p>
+                                    </div>
+                                    <p>
+                                        I've participated in more than 20 game jams over the past 6+ years and learned many valuable lessons in project scope, design, prototyping/experimentation, etc.
+                                        Working with the pressure and environment that game jams create isn't exactly my forte but I still love participating and learn a lot every time.
+                                        Below is a collection of screenshots from some of my better games.
+                                    </p>
+                                </div>
+                                <div class="gamejam-game">
+                                    <img src="img/greedy_lightbulb.png" alt="The Greedy Lightbulb" />
+                                    <div>
+                                        <h4> The Greedy Lightbulb </h4>
+                                        <p class="project-date"> (2020) </p>
+                                    </div>
+                                </div>
+                                <div class="gamejam-game">
+                                    <img src="img/the_hallway.png" alt="The Hallway" />
+                                    <div>
+                                        <h4> The Hallway </h4>
+                                        <p class="project-date"> (2020) </p>
+                                    </div>
+                                </div>
+                                <div class="gamejam-game">
+                                    <img src="img/rtg.png" alt="Rose Tinted Glasses" />
+                                    <div>
+                                        <h4> Rose Tinted Glasses </h4>
+                                        <p class="project-date"> (2019) </p>
+                                    </div>
+                                </div>
+                                <div class="gamejam-game">
+                                    <img src="img/astroskek.png" alt="Astroskek" />
+                                    <div>
+                                        <h4> Astroskek </h4>
+                                        <p class="project-date"> (2019) </p>
+                                    </div>
+                                </div>
+                                <div class="gamejam-game">
+                                    <img src="img/garden_o_love.png" alt="Garden o' Love" />
+                                    <div>
+                                        <h4> Garden o' Love </h4>
+                                        <p class="project-date"> (2018) </p>
+                                    </div>
+                                </div>
+                                <div class="gamejam-game">
+                                    <img src="img/cargo_crunch.png" alt="Cargo Crunch" />
+                                    <div>
+                                        <h4> Cargo Crunch </h4>
+                                        <p class="project-date"> (2018) </p>
+                                    </div>
+                                </div>
+                                <div class="gamejam-game">
+                                    <img src="img/circuit_builder.png" alt="Circuit Builder" />
+                                    <div>
+                                        <h4> Currents: Circuit Builder </h4>
+                                        <p class="project-date"> (2017) </p>
+                                    </div>
+                                </div>
+                                <div class="gamejam-game">
+                                    <img src="img/softlock.png" alt="Softlock" />
+                                    <div>
+                                        <h4> Softlock </h4>
+                                        <p class="project-date"> (2016) </p>
+                                    </div>
+                                </div>
+                                <div class="gamejam-game">
+                                    <img src="img/ancient.png" alt="Escape the Ruins" />
+                                    <div>
+                                        <h4> Escape the Ruins </h4>
+                                        <p class="project-date"> (2016) </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="about">
+                    <h3>ABOUT</h3>
+                    <div style="font-size:x-large; display:flex; flex-direction:column; gap: 1em;">
+                        <p> 
+                            I've been a creator for as long as I can remember, when I was young it was
+                            drawings, stories, stop-motion animations, but for the past 10 or so years it has been games.
+                            I've always been fascinated by games and have spent much of my life 
+                            figuring out how they work and creating my own. I initially started by making small
+                            Minecraft mods and loved getting to express myself through a medium I cared so much about, as I spent
+                            more time focused on making games I realized how much I loved programming too, the problem solving, logic, collaboration,
+                            there's nothing quite like it. I love the satisfaction of architecting the perfect solution to
+                            a software problem and am always looking for a new challenge.
+                            I have experience with many languages and frameworks and can quickly pick up new ones. I'm motivated
+                            and driven by a desire to bring people joy and have fun doing it.
+                        </p>
+                        <P>
+                            As motivated as I've been I felt unsupported by my environment for the longest time, I was unengaged with and 
+                            uninterested in school (and was going through a very stressful time of gender discovery), and decided to stop attending in 2018
+                            to fully persue indie game development, I quickly got a GED then started Broken Record Studios with a friend of mine.
+                            Though our two games Ironclad and Ocular never saw the light of day I learned and improved so much and feel
+                            fully prepared for whatever is next.
+                        </P>
+                        <p>
+                            When not programming you can probably find me tinkering with various other creative projects, playing games,
+                            rock climbing, or spending time with friends. 
+                        </p>
+                        <b>
+                            If you need your problems solved with code or just want to talk you can contact me at flseaui@gmail.com, I'm currently looking for a job :)
+                        </b>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</main>
+
+{{- end }}
