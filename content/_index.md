@@ -5,7 +5,7 @@ socialIcons:
     - name: github
       url: "https://github.com/flseaui"
     - name: linkedin
-      url: "https://linkedin.com"
+      url: "https://www.linkedin.com/in/claire-meyer-811ba3224/"
     - name: email
       utl: "flseaui@gmail.com"
 
