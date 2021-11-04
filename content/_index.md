@@ -7,7 +7,7 @@ socialIcons:
     - name: linkedin
       url: "https://www.linkedin.com/in/claire-meyer-811ba3224/"
     - name: email
-      utl: "flseaui@gmail.com"
+      utl: "claire@flseaui.com"
 
 title: Hey!
 ---
